@@ -17,6 +17,14 @@ public class NoteService {
     ArrayList<Note> noteBook = new ArrayList<>();
     int nextId = 1;
 
+    private Note findNoteById(int noteId){
+        for(Note note: noteBook){
+            if (note.getNoteId() == noteId){
+                return note;
+            }
+        }
+        return null;
+    }
 
     public void addNote(Note note) {
         note.setNoteId(nextId);
@@ -25,7 +33,7 @@ public class NoteService {
 
     }
     public void deleteNote(int noteId) {
-        Note found = null;
+        Note found = findNoteById(noteId);
         for (Note note: noteBook) {
                 if (note.getNoteId() == noteId) {
                     found = note;
@@ -42,17 +50,15 @@ public class NoteService {
     }
 
     public void listNotes (){
-        if (noteBook.isEmpty()){
-            noNotesAreFound();
-        }
-        else {
         for (Note note: noteBook) {
             System.out.println(note);
         }
+        if (noteBook.isEmpty()){
+            noNotesAreFound();
         }
     }
     public void listSingleNote(int noteId){
-        Note found = null;
+        Note found = findNoteById(noteId);
         for (Note note: noteBook){
             if (note.getNoteId() == noteId){
                 found = note;
@@ -66,18 +72,20 @@ public class NoteService {
             System.out.println(found);
         }
     }
-    public void listNotesByCategory (String categorySearch){
-        for(Note note: noteBook){
-                if(note.getCategory().equals(categorySearch)) {
-                    System.out.println(note);
-                }
-                else {
-                    noNotesAreFound();
-                    break;
-
-                }
+    public void listNotesByCategory (String categorySearch) {
+        boolean categoryFound = false;
+        for (Note note : noteBook) {
+            if (note.getCategory().equalsIgnoreCase(categorySearch)) {
+                categoryFound = true;
+                System.out.println(note);
+            }
+        }
+        if (!categoryFound){
+            noNotesAreFound();
         }
     }
+
+
     public void noNotesAreFound() {
         System.out.println("No Records Found!");
     }
