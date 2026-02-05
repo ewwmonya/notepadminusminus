@@ -19,8 +19,5 @@ public class Main {
         noteService.addNote(note2);
         noteService.addNote(note3);
         noteService.addNote(note4);
-        noteService.deleteNote(-5);
-        noteService.listNotes();
-
     }
 }

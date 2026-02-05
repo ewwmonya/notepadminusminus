@@ -25,13 +25,19 @@ public class NoteService {
 
     }
     public void deleteNote(int noteId) {
-        int noteBookSize = noteBook.size() - 1;
-        if (noteId > noteBookSize | noteId < 0) {
-            System.out.println("No [Id] Matching:" +  "[ " + noteId + " ]");
+        Note found = null;
+        for (Note note: noteBook) {
+                if (note.getNoteId() == noteId) {
+                    found = note;
+                    break;
+                }
+        }
+        if (found == null) {
+            noNotesAreFound();
         }
         else {
-            noteBook.remove(noteId - 1);
-            System.out.println("Note " + "[ " + noteId + " ] deleted");
+            noteBook.remove(found);
+            System.out.println("Note " + "[ " + found + " ] deleted");
         }
     }
 
@@ -46,15 +52,18 @@ public class NoteService {
         }
     }
     public void listSingleNote(int noteId){
+        Note found = null;
         for (Note note: noteBook){
             if (note.getNoteId() == noteId){
-                System.out.println(note);
+                found = note;
                 break;
             }
-            if (note.getNoteId() != noteId) {
-                noNotesAreFound();
-                break;
-            }
+        }
+        if (found == null) {
+            noNotesAreFound();
+        }
+        else {
+            System.out.println(found);
         }
     }
     public void listNotesByCategory (String categorySearch){
