@@ -1,12 +1,21 @@
 package notes;
 
+import java.util.Scanner;
+
 public class Main {
     //## This main file is loop file to
     // keep the program running while the user is using it.
     //## This will also be the "router" file. Kind of like a
     // host in a restaurant.
     public static void main(String[] args) {
+        boolean syActive = true;
+        Scanner scanner = new Scanner(System.in);
+        int no = 0;
+        while (syActive){
 
+            no = scanner.nextInt();
+            syActive = false;
+        }
 
         NoteService noteService = new NoteService();
         Note note = new Note( "Title1", "Note Body", "Construction");
@@ -19,6 +28,7 @@ public class Main {
         noteService.addNote(note2);
         noteService.addNote(note3);
         noteService.addNote(note4);
-        noteService.listNotesByCategory("IT");
+        noteService.listSingleNote(no);
+//        noteService.listNotes();
     }
 }
