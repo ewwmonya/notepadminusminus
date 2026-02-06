@@ -73,8 +73,6 @@ public class NoteService {
             noNotesAreFound();
         }
     }
-
-
     public void noNotesAreFound() {
         System.out.println("No Records Found!");
     }
