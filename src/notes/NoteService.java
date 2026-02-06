@@ -18,12 +18,13 @@ public class NoteService {
     int nextId = 1;
 
     private Note findNoteById(int noteId){
+        Note foundNote = null;
         for(Note note: noteBook){
             if (note.getNoteId() == noteId){
-                return note;
+                foundNote = note;
             }
         }
-        return null;
+        return foundNote;
     }
 
     public void addNote(Note note) {
@@ -34,18 +35,12 @@ public class NoteService {
     }
     public void deleteNote(int noteId) {
         Note found = findNoteById(noteId);
-        for (Note note: noteBook) {
-                if (note.getNoteId() == noteId) {
-                    found = note;
-                    break;
-                }
-        }
         if (found == null) {
             noNotesAreFound();
         }
         else {
             noteBook.remove(found);
-            System.out.println("Note " + "[ " + found + " ] deleted");
+            System.out.println("Note " + "[ " + found.getNoteId() + " ] deleted");
         }
     }
 
@@ -59,12 +54,6 @@ public class NoteService {
     }
     public void listSingleNote(int noteId){
         Note found = findNoteById(noteId);
-        for (Note note: noteBook){
-            if (note.getNoteId() == noteId){
-                found = note;
-                break;
-            }
-        }
         if (found == null) {
             noNotesAreFound();
         }

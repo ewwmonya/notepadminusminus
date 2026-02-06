@@ -8,14 +8,7 @@ public class Main {
     //## This will also be the "router" file. Kind of like a
     // host in a restaurant.
     public static void main(String[] args) {
-        boolean syActive = true;
-        Scanner scanner = new Scanner(System.in);
-        int no = 0;
-        while (syActive){
 
-            no = scanner.nextInt();
-            syActive = false;
-        }
 
         NoteService noteService = new NoteService();
         Note note = new Note( "Title1", "Note Body", "Construction");
@@ -28,7 +21,9 @@ public class Main {
         noteService.addNote(note2);
         noteService.addNote(note3);
         noteService.addNote(note4);
-        noteService.listSingleNote(no);
+        noteService.listSingleNote(4);
+        noteService.deleteNote(1);
+        noteService.listNotes();
 //        noteService.listNotes();
     }
 }
