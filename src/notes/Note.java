@@ -13,7 +13,7 @@ public class Note {
 
     //Note = Data model
 
-    // Basically Types in typeScript ^_^
+    // Basically Types in TypeScript ^_^
     private String title;
     private String noteBody;
     private String category;
@@ -36,7 +36,7 @@ public class Note {
     }
     @Override
     public String toString() {
-        return "[" + noteId + "] " + title + " (" + category + ") "+ ""  + noteBody;
+        return "[" + noteId + "] " + title + " (" + category + ") "+ " "  + noteBody;
     }
 
 }
