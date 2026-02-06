@@ -51,6 +51,7 @@ public class NoteService {
         if (noteBook.isEmpty()){
             noNotesAreFound();
         }
+        System.out.println("\n" + "___End Of List___" + "\n" );
     }
     public void listSingleNote(int noteId){
         Note found = findNoteById(noteId);

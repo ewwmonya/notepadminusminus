@@ -36,7 +36,7 @@ public class Note {
     }
     @Override
     public String toString() {
-        return "[" + noteId + "] " + title + " (" + category + ") "+ "\n" + noteBody;
+        return "[" + noteId + "] " + title + " (" + category + ") "+ ""  + noteBody;
     }
 
 }
