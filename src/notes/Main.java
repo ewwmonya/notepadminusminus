@@ -22,11 +22,12 @@ public class Main {
             System.out.print("Please Enter Choice #: ");
 
             int choice = scanner.nextInt();
-            String temp = scanner.nextLine();
+            scanner.nextLine();
 
 
             if (choice == 0){
                 System.out.println("GoodBye...");
+                scanner.close();
                 break;
             }
             else if (choice == 1) {
@@ -50,17 +51,18 @@ public class Main {
             else if (choice == 4) {
                 System.out.print("Enter Note Id: ");
                 int noteIdInput = scanner.nextInt();
+                scanner.nextLine();
                 noteService.listSingleNote(noteIdInput);
             }
 
             else if (choice == 5) {
                 System.out.print("Enter Note Id to Delete: ");
                 int noteIdInput = scanner.nextInt();
-                temp = scanner.nextLine();
+                scanner.nextLine();
                 System.out.println("Confirm that you would like to delete this Note!");
                 System.out.print(" Type \" Yes \": ");
                 String confirm = scanner.nextLine();
-                if (confirm.equals("Yes")) {
+                if (confirm.equalsIgnoreCase("Yes")) {
                 noteService.deleteNote(noteIdInput);
                 noteService.listNotes();
                 }
