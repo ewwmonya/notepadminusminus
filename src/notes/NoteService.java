@@ -72,9 +72,6 @@ public class NoteService {
                 categoryFound = true;
                 filteredList.add(note);
             }
-            else {
-                categoryFound = false;
-            }
         }
         if (categoryFound) {
             return filteredList;
