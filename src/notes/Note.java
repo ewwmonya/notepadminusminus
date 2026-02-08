@@ -19,7 +19,7 @@ public class Note {
     private String category;
     private int    noteId;
     Note( String title, String noteBody,String category){
-        if (!title.isEmpty() | !noteBody.isEmpty() | !category.isEmpty()) {
+        if (!title.isEmpty() && !noteBody.isEmpty() && !category.isEmpty()) {
             this.title = title;
             this.noteBody = noteBody;
             this.category = category;
@@ -27,6 +27,10 @@ public class Note {
     }
     public void setNoteId (int noteId) {
         this.noteId = noteId;
+    }
+    public String setNoteBody (String noteBodyInput) {
+        this.noteBody = noteBodyInput;
+        return noteBodyInput;
     }
     public int getNoteId () {
         return noteId;
