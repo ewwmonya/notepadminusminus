@@ -71,11 +71,7 @@ public class NoteService {
                 filteredList.add(note);
             }
         }
-        if (filteredList.isEmpty()) {
-            return null;
-        }
-        else {
             return filteredList;
-        }
+
     }
 }
