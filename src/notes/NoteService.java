@@ -27,54 +27,54 @@ public class NoteService {
         return foundNote;
     }
 
-    public void addNote(Note note) {
+    public Note addNote(Note note) {
         note.setNoteId(nextId);
         nextId++;
         noteBook.add(note);
-
+        return  note;
     }
-    public void deleteNote(int noteId) {
+    public Note updateNote(int noteID, String noteInput){
+        Note found = findNoteById(noteID);
+        if (found == null){
+            return null;
+        }
+        else {
+            found.setNoteBody(noteInput);
+            return found;
+        }
+    }
+    public String deleteNote(int noteId) {
         Note found = findNoteById(noteId);
         if (found == null) {
-            noNotesAreFound();
+            return null;
         }
         else {
             noteBook.remove(found);
-            System.out.println("Note " + "[ " + found.getNoteId() + " ] deleted");
+            return "Success";
         }
     }
 
-    public void listNotes (){
-        for (Note note: noteBook) {
-            System.out.println(note);
-        }
-        if (noteBook.isEmpty()){
-            noNotesAreFound();
-        }
-        System.out.println("\n" + "___End Of List___" + "\n" );
+    public ArrayList<Note> listNotes (){
+    return noteBook;
     }
-    public void listSingleNote(int noteId){
-        Note found = findNoteById(noteId);
-        if (found == null) {
-            noNotesAreFound();
-        }
-        else {
-            System.out.println(found);
-        }
+
+
+    public Note listSingleNote(int noteId){
+        return findNoteById(noteId);
     }
-    public void listNotesByCategory (String categorySearch) {
+    public Note listNotesByCategory (String categorySearch) {
         boolean categoryFound = false;
         for (Note note : noteBook) {
             if (note.getCategory().equalsIgnoreCase(categorySearch)) {
                 categoryFound = true;
-                System.out.println(note);
+                return note;
             }
         }
-        if (!categoryFound){
-            noNotesAreFound();
-        }
+
+        return null;
     }
-    public void noNotesAreFound() {
-        System.out.println("No Records Found!");
-    }
+
+
+
+
 }

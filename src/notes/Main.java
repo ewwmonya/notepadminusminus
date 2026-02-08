@@ -17,7 +17,8 @@ public class Main {
             System.out.println("2. List Notes");
             System.out.println("3. List Note By Category");
             System.out.println("4. List Note By Id");
-            System.out.println("5. Delete Note");
+            System.out.println("5. Update Note");
+            System.out.println("6. Delete Note");
             System.out.println("0. Exit!");
             System.out.print("Please Enter Choice #: ");
 
@@ -38,24 +39,32 @@ public class Main {
                 System.out.print("Category: ");
                 String category = scanner.nextLine();
                 Note inputNote = new Note(title, noteBody, category);
-                noteService.addNote(inputNote);
+                System.out.println(noteService.addNote(inputNote));
             }
             else if (choice == 2)  {
-                noteService.listNotes();
+                System.out.println(noteService.listNotes());
             }
             else if (choice == 3) {
                 System.out.print("Enter Category String: ");
                 String categoryInput = scanner.nextLine();
-                noteService.listNotesByCategory(categoryInput);
+                System.out.println(noteService.listNotesByCategory(categoryInput));
             }
             else if (choice == 4) {
                 System.out.print("Enter Note Id: ");
                 int noteIdInput = scanner.nextInt();
                 scanner.nextLine();
-                noteService.listSingleNote(noteIdInput);
+                System.out.println(noteService.listSingleNote(noteIdInput));
+            }
+            else if (choice == 5) {
+                System.out.print("Enter Note Id to Update: ");
+                int noteIdInput = scanner.nextInt();
+                scanner.nextLine();
+                System.out.print("Enter Text for body: ");
+                String newNoteText = scanner.nextLine();
+                System.out.println(noteService.updateNote(noteIdInput, newNoteText));
             }
 
-            else if (choice == 5) {
+            else if (choice == 6) {
                 System.out.print("Enter Note Id to Delete: ");
                 int noteIdInput = scanner.nextInt();
                 scanner.nextLine();
@@ -63,8 +72,8 @@ public class Main {
                 System.out.print(" Type \" Yes \": ");
                 String confirm = scanner.nextLine();
                 if (confirm.equalsIgnoreCase("Yes")) {
-                noteService.deleteNote(noteIdInput);
-                noteService.listNotes();
+                    System.out.println(noteService.deleteNote(noteIdInput));
+                    System.out.println(noteService.listNotes());
                 }
             }
         }

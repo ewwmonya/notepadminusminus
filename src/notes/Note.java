@@ -28,6 +28,10 @@ public class Note {
     public void setNoteId (int noteId) {
         this.noteId = noteId;
     }
+    public String setNoteBody (String noteBodyInput) {
+        this.noteBody = noteBodyInput;
+        return noteBodyInput;
+    }
     public int getNoteId () {
         return noteId;
     }
