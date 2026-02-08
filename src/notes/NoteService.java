@@ -63,21 +63,19 @@ public class NoteService {
         return findNoteById(noteId);
     }
     public ArrayList<Note> listNotesByCategory (String categorySearch) {
-        boolean categoryFound = false;
 
         ArrayList<Note> filteredList = new ArrayList<>();
 
         for (Note note : noteBook) {
             if (note.getCategory().equalsIgnoreCase(categorySearch)) {
-                categoryFound = true;
                 filteredList.add(note);
             }
         }
-        if (categoryFound) {
-            return filteredList;
+        if (filteredList.isEmpty()) {
+            return null;
         }
         else {
-            return null;
+            return filteredList;
         }
     }
 }
